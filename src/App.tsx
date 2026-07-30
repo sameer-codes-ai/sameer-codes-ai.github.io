@@ -16,7 +16,7 @@ const projects = [
     title: 'Cryptic Bird',
     type: 'Mini Game',
     text: 'A flappy bird inspired game with an innovative spin on the classic Flappy Bird, but with added challenges like dynamic levels, moving pipes, spiked pipes, and changing backgrounds. The game integrates Blockchain technology, allowing players to enter their name and BSC blockchain address via Java Swing textboxes. Based on their score, players would be rewarded with our custom DevJams Token, coded in Solidity, sent manually to their blockchain wallet after cross verification of score.We stored the player data in a .txt file and used the BEP20 token standard for crypto transactions.',
-    tags: ['JavaFX', 'JavaSwing', 'TypeScript', 'Firebase'],
+    tags: ['JavaFX', 'JavaSwing'],
     link:'https://github.com/sameer-codes-ai/DecentralisedDreamers',
     style: 'project-two'
   }
