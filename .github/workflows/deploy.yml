@@ -30,11 +30,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
       - name: Build site
         run: npm run build
-
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
+        env:
+          # GitHub supplies / for a user site and /repository-name/ for a project site.
+          VITE_BASE_PATH: ${{ steps.pages.outputs.base_path }}
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
