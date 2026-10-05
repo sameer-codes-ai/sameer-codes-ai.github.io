@@ -1,152 +1,240 @@
-import { ArrowDownRight, ArrowUpRight, Code2, Mail, Menu, Send, X } from 'lucide-react'
-import { FormEvent, useState } from 'react'
+import { ArrowRight, Download, Trophy, Target, Award, BookOpen, Code, Database, Cpu, Layout, GitBranch, Terminal } from 'lucide-react'
 import portraitImage from '../img.jpg'
 
-const skills = ['TypeScript', 'React', 'Node.js', 'Python', 'Java', 'Next.js', 'PostgreSQL', 'Git & GitHub', 'Figma', 'AWS']
 const projects = [
   {
-    title: 'LeetFlixV3',
-    type: 'Full Stack Platform',
-    text: 'LeetFlix V3 is a full-stack, production-grade web application that transforms passive binge-watching into an interactive, competitive experience. Designed with a premium, neon-themed Ul, the platform enables users to test their knowledge of popular TV shows through a highly optimized quiz engine while tracking performance, engagement, and progression in real time.The system features a scalable architecture built with Next.js (App Router) and NestJS, leveraging Google Cloud Firestore for flexible NoSQL data management. ',
-    tags: ['Next.js', 'NestJS', 'TypeScript', 'Firebase'],
-    link:'https://leetflixv3.vercel.app/',
-    style: 'project-one'
+    title: 'LeetFlix V3',
+    description: 'A modern competitive programming platform inspired by streaming platforms. Designed with a premium, neon-themed Ul, the platform enables users to test their knowledge of popular TV shows through a highly optimized quiz engine.',
+    tags: ['NEXT.JS', 'NESTJS', 'TYPESCRIPT', 'FIREBASE'],
+    link: 'https://leetflixv3.vercel.app/'
+  },
+  {
+    title: 'AI Traffic Vision',
+    description: 'Object Detection & Computer Vision for Smart Traffic Systems. Developed object detection models for Indian traffic mobility, securing Rank 5 nationally in Urban Vision AI Hackathon.',
+    tags: ['YOLO', 'DEEP LEARNING', 'COMPUTER VISION', 'PYTHON'],
+    link: 'https://github.com/sameer-codes-ai'
   },
   {
     title: 'Cryptic Bird',
-    type: 'Mini Game',
-    text: 'A flappy bird inspired game with an innovative spin on the classic Flappy Bird, but with added challenges like dynamic levels, moving pipes, spiked pipes, and changing backgrounds. The game integrates Blockchain technology, allowing players to enter their name and BSC blockchain address via Java Swing textboxes. Based on their score, players would be rewarded with our custom DevJams Token, coded in Solidity, sent manually to their blockchain wallet after cross verification of score.We stored the player data in a .txt file and used the BEP20 token standard for crypto transactions.',
-    tags: ['JavaFX', 'JavaSwing'],
-    link:'https://github.com/sameer-codes-ai/DecentralisedDreamers',
-    style: 'project-two'
+    description: 'A Java-based blockchain-integrated game with token rewards for DevJams\'24 by GDG. Combines creative game mechanics with Solidity smart contracts on the BSC network.',
+    tags: ['JAVAFX', 'BLOCKCHAIN', 'SOLIDITY'],
+    link: 'https://github.com/sameer-codes-ai/DecentralisedDreamers'
   }
 ]
 
+const skills = [
+  { category: 'Languages', items: ['C / C++', 'Java', 'Python', 'JavaScript', 'TypeScript'], icon: <Code size={20}/> },
+  { category: 'Frontend', items: ['React', 'Next.js', 'Tailwind CSS', 'HTML / CSS'], icon: <Layout size={20}/> },
+  { category: 'Backend', items: ['Node.js', 'Express', 'NestJS', 'FastAPI', 'Flask'], icon: <Terminal size={20}/> },
+  { category: 'Database & Cloud', items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Firebase'], icon: <Database size={20}/> },
+  { category: 'AI & ML', items: ['PyTorch', 'TensorFlow', 'scikit-learn', 'Pandas', 'NumPy'], icon: <Cpu size={20}/> },
+  { category: 'Tools & DevOps', items: ['Git / GitHub', 'Docker', 'Linux', 'VS Code', 'Figma'], icon: <GitBranch size={20}/> }
+]
+
 function App() {
-  const [open, setOpen] = useState(false)
-  const [sent, setSent] = useState(false)
-  const submit = (event: FormEvent) => { event.preventDefault(); setSent(true) }
-  return <div className="site-shell">
-    <header className="header">
-      <a className="brand" href="#top">SK<span>.</span></a>
-      <nav className={open ? 'nav open' : 'nav'}>
-        {['About', 'Projects', 'Skills', 'Contact'].map(item => <a key={item} onClick={() => setOpen(false)} href={`#${item.toLowerCase()}`}>{item}</a>)}
-      </nav>
-      <a className="header-cta" href="#contact">Get in touch <ArrowUpRight size={16}/></a>
-      <button className="menu" aria-label="Toggle menu" onClick={() => setOpen(!open)}>{open ? <X/> : <Menu/>}</button>
-    </header>
+  return (
+    <div className="site-wrapper">
+      <header className="header">
+        <nav className="nav">
+          <a href="#about">ABOUT</a>
+          <a href="#work">WORK</a>
+          <a href="#expertise">EXPERTISE</a>
+          <a href="#metrics">METRICS</a>
+          <a href="#contact">CONTACT</a>
+        </nav>
+      </header>
 
-    <main id="top">
-      <section className="hero section">
-        <div className="eyebrow">
-          <i/> Available for opportunities
-        </div>
-        <p className="hero-kicker">
-          Hello World, It's <strong>Sameer Kumar</strong>
-        </p>
-        <div className="hero-bottom">
-          <p>
-            I’m a computer science student and developer who turns curious ideas into useful, human-centered products. Currently learning, building, and looking for the next challenge.
-          </p>
-          <div className="hero-actions">
-            <a className="button primary" href="#projects">View my work <ArrowDownRight size={18}/></a>
-            <a className="button secondary" href="https://drive.google.com/file/d/1zp6i1NnWe3EVhCXef1O905ne79KTeXUu/view?usp=drive_link">Download résumé</a>
-          </div>
-        </div>
-        
-        <div className="hero-orbit">
-          <span>scroll to explore</span><ArrowDownRight size={17}/>
-        </div>
-      </section>
-
-      <section className="skills-band" id="skills">
-        <div className="marquee">
-          {[...skills, ...skills].map((skill, index) => <span key={`${skill}-${index}`}><b>✦</b>{skill}</span>)}
-        </div>
-      </section>
-
-      <section className="section projects" id="projects">
-        <div className="section-heading">
-          <div>
-            <p className="overline">Selected work</p>
-            <h2>My Personal<br/>and Hackathon Projects.</h2>
-          </div>
-          <p>
-            Experiments, products, and ideas made with intention.
-          </p>
-        </div>
-        <div className="project-grid">
-          {projects.map((project, i) => 
-          <article className={`project-card ${project.style}`} key={project.title}>
-            <div className="card-top">
-              <span>{`0${i + 1}`}</span>
-              <a href={`${project.link}`} aria-label={`View ${project.title}`}><ArrowUpRight size={19}/>
-              </a>
+      <main>
+        <section className="hero">
+          <div className="hero-content">
+            <p className="eyebrow">CS UNDERGRADUATE, VIT VELLORE</p>
+            <h1>Sameer Kumar</h1>
+            <div className="status-banner">AVAILABLE FOR OPPORTUNITIES</div>
+            <p className="hero-desc">
+              I build products across web development, AI, and blockchain. From shipping full-stack platforms to competing in national hackathons, I love solving hard problems and proving they hold up in the real world.
+            </p>
+            <div className="hero-tags">
+              <span>FULL STACK</span>
+              <span>AI / ML</span>
+              <span>BLOCKCHAIN</span>
+              <span>COMPETITIVE PROGRAMMING</span>
             </div>
-            <div className="visual">
-            <div className="visual-window">
-              <span/><span/><span/>
-              <div className="visual-content"/>
-              </div></div>
-              <div className="project-info">
-                <p>{project.type}</p>
-                <h3>{project.title}</h3><p className="description">{project.text}</p>
-                <div className="tags">
-                  {project.tags.map(tag => <span key={tag}>{tag}</span>)}
+            <a href="#work" className="btn-primary">VIEW FEATURED WORK</a>
+          </div>
+          <div className="hero-visual">
+            <div className="portrait-container">
+              <div className="decorator-star1">✦</div>
+              <div className="decorator-star2">✦</div>
+              <div className="decorator-me">me ↘</div>
+              <img src={portraitImage} alt="Sameer Kumar" />
+            </div>
+          </div>
+        </section>
+
+        <section id="about" className="about-section">
+          <p className="section-eyebrow">THE JOURNEY</p>
+          <h2>Hello World! <br/>Why the range, not the niche.</h2>
+          <div className="about-layout">
+            <div className="about-text">
+              <p>
+                My coding journey began at age 12 with the tiny magic of QBasic, followed by HTML and Java in middle school. Since then, my passion for problem-solving has only grown. I completed my schooling at St. Paul's High School and Don Bosco Academy in Patna, actively participating in the National Science Olympiad (NSO) and International Mathematics Olympiad (IMO).
+              </p>
+              <p>
+                Today, as a CS undergraduate at Vellore Institute of Technology, I deliberately test myself against different corners of computer science—hardware, theory, systems, and markets—to find where the hard problems actually are.
+              </p>
+              <p>
+                I care about the space where technology meets people: solving an actual problem, removing friction, and leaving something a little better than I found it. Every project here is that stress test running in public.
+              </p>
+            </div>
+            <div className="about-highlights">
+              <div className="highlight-item">
+                <h4>DevJams'24 (GDG)</h4>
+                <p>Built Cryptic Bird, a blockchain-integrated game with token rewards.</p>
+              </div>
+              <div className="highlight-item">
+                <h4>Urban Vision Hackathon</h4>
+                <p>Developed object detection models for Indian traffic mobility (Rank 5 nationally).</p>
+              </div>
+              <div className="highlight-item">
+                <h4>ACM C2C</h4>
+                <p>Created LeetFlix, a Dockerized streaming-themed competitive programming project.</p>
+              </div>
+              <div className="highlight-item">
+                <h4>graVITas 2025</h4>
+                <p>Student volunteer handling premium events like Expo 2.0, Celestia, and The Last Experiment.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="work" className="work-section">
+          <div className="section-header">
+            <p className="section-eyebrow">FEATURED WORK</p>
+            <h2>Latest Builds</h2>
+          </div>
+          <div className="projects-grid">
+            {projects.map(p => (
+              <div key={p.title} className="project-card">
+                <h3>{p.title}</h3>
+                <p>{p.description}</p>
+                <div className="project-tags">
+                  {p.tags.map(t => <span key={t}>{t}</span>)}
+                </div>
+                <a href={p.link} target="_blank" rel="noreferrer" className="explore-link">EXPLORE THE BUILD <ArrowRight size={16}/></a>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="expertise" className="tech-section">
+          <div className="section-header">
+            <p className="section-eyebrow">ARSENAL</p>
+            <h2>Technical Expertise</h2>
+          </div>
+          <div className="native-tech-grid">
+            {skills.map(skill => (
+              <div key={skill.category} className="native-tech-card">
+                <div className="tech-card-header">
+                  {skill.icon}
+                  <h3>{skill.category}</h3>
+                </div>
+                <div className="native-pill-wrap">
+                  {skill.items.map(item => <span key={item} className="native-pill">{item}</span>)}
                 </div>
               </div>
-          </article>)}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
 
-      <section className="section about" id="about">
-        <div className="about-copy">
-          <p className="overline">A little about me</p>
-          <h2>Curious by nature.<br/>Intentional by craft.</h2>
-          <p className="lead">
-            My relationship with code began early, with the tiny magic of QBasic and HTML. Today, I’m pursuing a B.Tech in Computer Science at VIT Vellore, building a foundation in thoughtful problem solving and collaborative engineering.
-          </p>
-          <p>
-            I care about the space where technology meets people: solving an actual problem, removing friction, and leaving something a little better than I found it.
-          </p>
-          <a className="text-link" href="#contact">More about my journey <ArrowUpRight size={17}/></a>
-        </div>
-        <div className="portrait-wrap">
-          <div className="portrait-glow"/>
-          <div className="portrait">
-            <img src={portraitImage} alt="Sameer Kumar"/>
-            <div className="portrait-label">
-              <span>Based in</span><strong>Patna, India</strong>
+        <section id="metrics" className="metrics-section">
+          <div className="section-header">
+            <p className="section-eyebrow">BY THE NUMBERS</p>
+            <h2>Metrics & Milestones</h2>
+          </div>
+          
+          <div className="bento-grid">
+            <div className="bento-box bento-code">
+              <div className="window-controls">
+                <span className="dot red"></span>
+                <span className="dot yellow"></span>
+                <span className="dot green"></span>
+              </div>
+              <div className="code-content">
+                <span className="code-comment">// Fun Fact: My engineering process</span>
+                <br/>
+                <span className="code-keyword">while</span> (!Success) {'{'}
+                <br/>
+                {'  '}Learn();
+                <br/>
+                {'  '}Build();
+                <br/>
+                {'  '}Fail();
+                <br/>
+                {'  '}Improve();
+                <br/>
+                {'}'}
+                <br/>
+                <span className="code-keyword">return</span> Success;
+              </div>
+            </div>
+
+            <div className="bento-box bento-stat">
+              <BookOpen className="bento-icon" size={28}/>
+              <h3>500+</h3>
+              <p>DSA Problems Solved</p>
+            </div>
+
+            <div className="bento-box bento-stat">
+              <Target className="bento-icon" size={28}/>
+              <h3>Top 22%</h3>
+              <p>LeetCode Weekly 503</p>
+            </div>
+
+            <div className="bento-box bento-stat">
+              <Trophy className="bento-icon" size={28}/>
+              <h3>Rank 5/11</h3>
+              <p>Urban Vision AI Hackathon</p>
+            </div>
+
+            <div className="bento-box bento-stat">
+              <Award className="bento-icon" size={28}/>
+              <h3>Gold Medal</h3>
+              <p>NSO Distinction</p>
+            </div>
+
+            <div className="bento-box bento-goals">
+              <h3>🎯 2026 Goals</h3>
+              <div className="goals-list">
+                <div className="goal-item"><ArrowRight size={16}/> <span>1900+ LeetCode Rating</span></div>
+                <div className="goal-item"><ArrowRight size={16}/> <span>Publish AI research</span></div>
+                <div className="goal-item"><ArrowRight size={16}/> <span>Win National Hackathons</span></div>
+                <div className="goal-item"><ArrowRight size={16}/> <span>Build impactful open-source</span></div>
+              </div>
             </div>
           </div>
-          <div className="orbit-text">● STUDENT &nbsp; ● DEVELOPER &nbsp; ● MAKER &nbsp;</div>
-        </div>
-      </section>
+        </section>
 
-      <section className="section contact" id="contact">
-        <div className="contact-intro">
-          <p className="overline">Let’s make something</p>
-          <h2>Have a thought?<br/><em>Let’s talk.</em></h2>
-          <p>Whether you have a project in mind, an opportunity, or just want to say hello — my inbox is always open.</p>
-          <a href="mailto:sameer9085kumar@gmail.com" className="email">Contact Email<ArrowUpRight size={20}/></a>
-        </div>
-        <form onSubmit={submit}>
-          <label>Name<input required placeholder="What should I call you?"/></label>
-          <label>Email<input required type="email" placeholder="you@example.com"/></label>
-          <label>Message<textarea required placeholder="Tell me a little about your idea..." rows={4}/></label>
-          <button className="button primary" type="submit">{sent ? 'Message sent — thank you!' : <>Send message <Send size={17}/></>}</button>
-        </form>
-      </section>
-    </main>
-    <footer>
-      <a className="brand" href="#top">SK<span>.</span></a>
-      <p>© {new Date().getFullYear()} Sameer Kumar. Built with curiosity.</p>
-      <div className="socials">
-        <a href="https://github.com/sameer-codes-ai" aria-label="GitHub"><Code2 size={19}/></a>
-        <a href="https://www.linkedin.com/in/sameer4350" aria-label="LinkedIn"><span className="social-letter">in</span></a>
-        <a href="mailto:sameer9085kumar@gmail.com" aria-label="Email"><Mail size={19}/></a>
-      </div>
-    </footer>
-  </div>
+      </main>
+
+      <footer id="contact" className="contact-section">
+          <div className="contact-content">
+            <div className="contact-left">
+              <h2>LET'S TALK</h2>
+              <p>Open to research collaborations, internships, and anything that needs someone comfortable moving between hardware, theory, and production code.</p>
+              <br/>
+              <a href="https://drive.google.com/file/d/1zp6i1NnWe3EVhCXef1O905ne79KTeXUu/view?usp=drive_link" target="_blank" rel="noreferrer" className="btn-secondary"><Download size={18}/> DOWNLOAD FULL CV (PDF)</a>
+            </div>
+            <div className="contact-right">
+              <div className="quote">"Code. Learn. Build. Repeat."</div>
+              <div className="social-links-grid">
+                <a href="mailto:sameer9085kumar@gmail.com" className="btn-social">EMAIL</a>
+                <a href="https://github.com/sameer-codes-ai" className="btn-social">GITHUB</a>
+                <a href="https://www.linkedin.com/in/sameer4350" className="btn-social">LINKEDIN</a>
+              </div>
+            </div>
+          </div>
+      </footer>
+    </div>
+  )
 }
 export default App
